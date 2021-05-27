@@ -11,12 +11,19 @@ class ariprog
     public static void main (String [] args) throws IOException
     {
         BufferedReader f = new BufferedReader(new FileReader("ariprog.in"));
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ariprog.out")));
-        StringTokenizer st = new StringTokenizer(f.readLine());
-        int i1 = Integer.parseInt(st.nextToken());   
-        int i2 = Integer.parseInt(st.nextToken());   
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ariprog.out")))
+        int a = Integer.parseInt(f.readLine());   
+        int b = Integer.parseInt(f.readLine());   
         out.close();                                  
         f.close();
+        boolean[] allbisquare = new boolean[b * b + 1];
+        for (int i = 0; i <= b; i++)
+        {
+            for (int j = 0; j <= b; j++)
+            {
+                allbisquare[i * i + j * j] = true;
+            }
+        }
     }
 
     

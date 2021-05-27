@@ -17,7 +17,7 @@ class prob1
             int current= Integer.parseInt(Citationreader.nextToken());
             if (current > max)
             {
-                max = current;
+                max = current; 
             }
             eachCitecount[current]++;
         }
