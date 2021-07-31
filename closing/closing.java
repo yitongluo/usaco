@@ -6,7 +6,7 @@ TASK: closing
 import java.io.*;
 import java.util.*;
 
-class planting
+class closing
 {
     public static void main (String [] args) throws IOException
     {
