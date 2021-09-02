@@ -5,7 +5,6 @@ TASK: closing
 */
 import java.io.*;
 import java.util.*;
-
 class closing
 {
     public static void main (String [] args) throws IOException
@@ -30,58 +29,55 @@ class closing
             connection.get(first).add(second);
             connection.get(second).add(first);
         }
-        boolean[]canceled = new boolean[barns];
-        int max = barns;
-        
-        for (int c = 1; c < barns - 2; c++)
+        boolean [] used = new boolean[barns];
+        int[] closelist = new int[barns];
+        for (int c = 0; c < closelist.length; c++)
         {
-            int input = Integer.parseInt(f.readLine()) - 1;
-            ArrayList<Integer> temp = connection.get(input);
-            canceled[input] = true;
-            max--;
-            boolean[] used = Arrays.copyOf(canceled, barns);
-            used[getnonclose(canceled)] = true;
-            if (getallconnection(getnonclose(canceled), connection, used) == max)
-            {
-                out.println("YES");
-            }
-            else
-            {
-                out.println("NO");
-            }
+            int current = Integer.parseInt(f.readLine());
+            closelist[c] = current - 1;
+        }
+        int last = closelist[barns - 1];
+        run(connection, used, last);
+        out.println(isconnect(used));
+        boolean[] closed = new boolean[barns];
+        for (int i = 0; i < barns - 2; i++)
+        {
+            closed[closelist[i]] = true;
+            boolean[] copy = closed.clone();
+            run(connection, copy, last);
+            out.println(isconnect(copy));
         }
         out.println("YES");
         out.close();
         f.close();
     }
-
-    public static int getallconnection(int from, ArrayList<ArrayList<Integer>> connection, boolean[]
-    used)
+    public static void run(ArrayList<ArrayList<Integer>> connection, boolean[] used, int start)
     {
-        int result = 0;
-        ArrayList<Integer> current = connection.get(from);
+        //used[start] = true;
+        ArrayList<Integer> current = connection.get(start);
         for (int i = 0; i < current.size(); i++)
         {
-            if (!used[current.get(i)])
+            int temp = current.get(i);
+            if (!used[temp])
             {
-                used[current.get(i)] = true;
-                result++;
-                result = getallconnection(current.get(i), connection, used);
+                used[temp] = true;
+                run(connection, used, temp);
             }
         }
-        return result;
     }
-
-    public static int getnonclose(boolean[] canceled)
+    public static String isconnect(boolean[] used)
     {
-        for (int i = 0; i < canceled.length; i++)
+        for (boolean x : used)
         {
-            if (!canceled[i])
+            if (!x)
             {
-                return i;
+                return "NO";
             }
         }
-        return -1;
+        return "YES";
     }
-
 }
+
+    
+
+ 
