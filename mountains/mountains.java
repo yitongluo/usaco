@@ -107,5 +107,4 @@ class interval
     {
         return start + " " + end;
     }
-
 }

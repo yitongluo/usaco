@@ -12,6 +12,7 @@ class socdist1
     {
         BufferedReader in = new BufferedReader(new FileReader("socdist1.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("socdist1.out")));
+        
         int length = Integer.parseInt(in.readLine());
         boolean[] map = new boolean[length];
         String road = in.readLine();
