@@ -14,13 +14,13 @@ class convention
                                                       // input file name goes above
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("convention.out")));
         StringTokenizer s = new StringTokenizer(f.readLine());
-        int cownum = Integer.parseInt(s.nextToken());
+        int cow = Integer.parseInt(s.nextToken());
         int cars = Integer.parseInt(s.nextToken());
         int eachcap =  Integer.parseInt(s.nextToken());
-        int[] arrivetime = new int[cownum];
+        int[] arrivetime = new int[cow];
         StringTokenizer st = new StringTokenizer(f.readLine());
         int max = Integer.MIN_VALUE;
-        for (int a = 0; a < cownum; a++)
+        for (int a = 0; a < cow; a++)
         {
             int current =  Integer.parseInt(st.nextToken());
             arrivetime[a] = current;
@@ -28,7 +28,7 @@ class convention
         }
         Arrays.sort(arrivetime);
         //out.println(isok(99738, cars, eachcap, arrivetime));
-        out.println(getresult(arrivetime, 0, max, cownum, cars, eachcap));
+        out.println(getresult(arrivetime, 0, max, cow, cars, eachcap));
         f.close();
         out.close();
     }
